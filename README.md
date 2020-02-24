@@ -92,3 +92,6 @@ rerender(<FavoriteNumber max={10} />);
 // getBy- queries will throw if the matching elements are not found.
 expect(getByRole("alert")).toBeNull();
 ```
+
+Use queryBy- if you need to test that something is NOT rendered.
+Use getBy- queries for all other cases for nicer output.

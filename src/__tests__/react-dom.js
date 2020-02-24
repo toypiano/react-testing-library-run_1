@@ -12,7 +12,7 @@ test('renders a number input with a label "Favorite Number"', () => {
 });
 
 test("entering an invalid value shows an error message", () => {
-  const { getByLabelText, getByRole, rerender, debug } = render(
+  const { getByLabelText, getByRole, rerender, queryByRole } = render(
     <FavoriteNumber />
   );
   const input = getByLabelText(/favorite number/i);
@@ -22,8 +22,6 @@ test("entering an invalid value shows an error message", () => {
     /the number is invalid/i
   );
   rerender(<FavoriteNumber max={10} />);
-  // this does not pass
-  // 'Unable to find an accessible element with the role "alert"'
-  // getBy- queries will throw if the matching elements are not found.
-  expect(getByRole("alert")).toBeNull();
+  // queryBy- will return null if matches not found
+  expect(queryByRole("alert")).toBeNull();
 });
