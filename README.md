@@ -83,3 +83,12 @@ const { getByLabelText, getByRole, rerender, debug } = render(
 // allowing you to test with updated props
 rerender(<FavoriteNumber max={10} />);
 ```
+
+## Assert That Something is NOT Rendered with React Testing Library
+
+```jsx
+// this does not pass
+// 'Unable to find an accessible element with the role "alert"'
+// getBy- queries will throw if the matching elements are not found.
+expect(getByRole("alert")).toBeNull();
+```

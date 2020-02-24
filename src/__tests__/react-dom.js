@@ -16,17 +16,14 @@ test("entering an invalid value shows an error message", () => {
     <FavoriteNumber />
   );
   const input = getByLabelText(/favorite number/i);
-
-  // user generates many events other than just change
-  // like focus, click, keypress, keydown, keyup, etc...
   user.type(input, "10");
 
   expect(getByRole("alert")).toHaveTextContent(
     /the number is invalid/i
   );
-  debug(); // renders warning
-  // re-render component within the same container
-  // allowing you to test with updated props
   rerender(<FavoriteNumber max={10} />);
-  debug(); // no warning. input value is within the range.
+  // this does not pass
+  // 'Unable to find an accessible element with the role "alert"'
+  // getBy- queries will throw if the matching elements are not found.
+  expect(getByRole("alert")).toBeNull();
 });
