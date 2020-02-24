@@ -54,3 +54,32 @@
 ## Debug the DOM State During Tests using React Testing Library's debug Function
 
 ## Test React Component Event Handlers with fireEvent from React Testing Library
+
+```jsx
+import user from "@testing-library/user-event";
+
+test("entering an invalid value shows an error message", () => {
+  const { getByLabelText, getByRole } = render(<FavoriteNumber />);
+  const input = getByLabelText(/favorite number/i);
+
+  // user generates many events other than just change
+  // like focus, click, keypress, keydown, keyup, etc...
+  user.type(input, "10");
+
+  expect(getByRole("alert")).toHaveTextContent(
+    /the number is invalid/i
+  );
+});
+```
+
+## Test Prop Updates with React Testing Library
+
+```jsx
+const { getByLabelText, getByRole, rerender, debug } = render(
+    <FavoriteNumber />
+  );
+...
+// re-render component within the same container
+// allowing you to test with updated props
+rerender(<FavoriteNumber max={10} />);
+```

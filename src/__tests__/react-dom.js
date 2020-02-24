@@ -12,7 +12,9 @@ test('renders a number input with a label "Favorite Number"', () => {
 });
 
 test("entering an invalid value shows an error message", () => {
-  const { getByLabelText, getByRole } = render(<FavoriteNumber />);
+  const { getByLabelText, getByRole, rerender, debug } = render(
+    <FavoriteNumber />
+  );
   const input = getByLabelText(/favorite number/i);
 
   // user generates many events other than just change
@@ -22,4 +24,9 @@ test("entering an invalid value shows an error message", () => {
   expect(getByRole("alert")).toHaveTextContent(
     /the number is invalid/i
   );
+  debug(); // renders warning
+  // re-render component within the same container
+  // allowing you to test with updated props
+  rerender(<FavoriteNumber max={10} />);
+  debug(); // no warning. input value is within the range.
 });
