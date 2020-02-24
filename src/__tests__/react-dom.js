@@ -1,11 +1,20 @@
 import React from "react";
 import { FavoriteNumber } from "../favorite-number";
-import { render } from "@testing-library/react";
+// testing-library/dom also has fireEvent but this one is specific to React and has some extra features.
+import { render, fireEvent } from "@testing-library/react";
 
 test('renders a number input with a label "Favorite Number"', () => {
-  const { getByLabelText, debug } = render(<FavoriteNumber />);
-  debug(); // print entire component
+  const { getByLabelText } = render(<FavoriteNumber />);
   const input = getByLabelText(/favorite number/i);
   expect(input).toHaveAttribute("type", "number");
-  debug(input); // print only passed element
+});
+
+test("entering an invalid value shows an error message", () => {
+  const { getByLabelText, getByRole } = render(<FavoriteNumber />);
+  const input = getByLabelText(/favorite number/i);
+  // fire change event on input with custom event object.
+  fireEvent.change(input, { target: { value: "10" } });
+  expect(getByRole("alert")).toHaveTextContent(
+    /the number is invalid/i
+  );
 });

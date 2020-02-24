@@ -52,3 +52,5 @@
 - renders React component to the dom and returns query methods to find element that you want to test within that component.
 
 ## Debug the DOM State During Tests using React Testing Library's debug Function
+
+## Test React Component Event Handlers with fireEvent from React Testing Library
