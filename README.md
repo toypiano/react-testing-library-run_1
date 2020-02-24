@@ -45,4 +45,10 @@
 
 ## Use DOM Testing Library to Write More Maintainable React Tests
 
-## Test React Components with Jest and React Testing Library.
+## Use React Testing Library to Render and Test React Components
+
+`render` function from `@testing-library/react'
+
+- renders React component to the dom and returns query methods to find element that you want to test within that component.
+
+## Debug the DOM State During Tests using React Testing Library's debug Function
