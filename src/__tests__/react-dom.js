@@ -1,5 +1,3 @@
-// add custom jest matchers to test the state of DOM
-import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { FavoriteNumber } from "../favorite-number";
 import ReactDOM from "react-dom";
