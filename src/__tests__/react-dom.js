@@ -1,10 +1,8 @@
 // add custom jest matchers to test the state of DOM
-import * as jestDOM from "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { FavoriteNumber } from "../favorite-number";
 import ReactDOM from "react-dom";
-
-expect.extend(jestDOM); // provides more useful
 
 test('renders a number input with a label "Favorite Number"', () => {
   const div = document.createElement("div"); // create a container DOM element
