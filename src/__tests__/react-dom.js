@@ -9,7 +9,7 @@ test('renders a number input with a label "Favorite Number"', () => {
 
   // find input element that correspond to given label text from the specified DOM node.
   // Just like the way the user identifies form control by the label it's associated with.
-  const input = queries.getByLabelText(div, "Favorite Number");
+  const input = queries.getByLabelText(div, /favorite number/i);
 
   // query around container and expect
   expect(input).toHaveAttribute("type", "number");
