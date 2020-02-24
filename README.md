@@ -42,3 +42,5 @@
     > 14 |   expect(div.querySelector("inpu")).toHaveAttribute("type", "number");
          |                                     ^
   ```
+
+## Use DOM Testing Library to Write More Maintainable React Tests
